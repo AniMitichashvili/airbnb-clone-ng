@@ -1,0 +1,43 @@
+<div class="both">
+  <div class="crd-slide">
+    <div class="crd" *ngFor="let card of cards">
+      <div class="clm">
+        <img [src]="card.image" alt="Card Image">
+        <h3>{{ card.title }}</h3>
+      </div>
+    </div>
+  </div>
+  <div class="filt">
+    <div class="filt-cont">
+      <button (click)="openFilterModal()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" aria-hidden="true" role="presentation" focusable="false" style="display: block; fill: none; height: 16px; width: 16px; stroke: currentcolor; stroke-width: 3; overflow: visible;">
+          <path fill="none" d="M7 16H3m26 0H15M29 6h-4m-8 0H3m26 20h-4M7 16a4 4 0 1 0 8 0 4 4 0 0 0-8 0zM17 6a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 20a4 4 0 1 0 8 0 4 4 0 0 0-8 0zm0 0H3">
+          </path>
+        </svg>
+        <span>Filters</span>
+      </button>
+    </div>
+  </div>
+</div>
+<mat-card>
+  <mat-card-content class="example-card">
+    <div *ngFor="let hotel of filteredHotels; let hotelIndex = index" class="card" (click)="openHotelDetails(hotel.id)">
+      <div class="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let image of hotel.images; let imageIndex = index">
+            <img [src]="hotel.images[activeImageIndex[hotelIndex]].url" alt="Hotel Image" class="mat-card-image" *ngIf="hotel.images && hotel.images.length > 0 && imageIndex === activeImageIndex[hotelIndex]">          </div>
+        </div>
+        <a class="carousel-control-prev" (click)="previousImage(hotelIndex, $event)">&#8249;</a>
+        <a class="carousel-control-next" (click)="nextImage(hotelIndex, $event)">&#8250;</a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ hotel.address.country }}, {{ hotel.address.city }}</h5>
+        <p class="card-text">{{ hotel.description }}</p>
+        <p class="card-text">Rating: {{ hotel.rating }}</p>
+        <p class="card-text" *ngIf="hotel.rooms && hotel.rooms.length > 0">
+          $ {{ hotel.rooms[0].pricePerNight }} night
+        </p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

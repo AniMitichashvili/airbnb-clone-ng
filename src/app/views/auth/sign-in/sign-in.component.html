@@ -1,0 +1,28 @@
+<form #form="ngForm" (ngSubmit)="onAuthSubmit(form)" class="example-form">
+    <h2>Sign in or create an account</h2>
+    <hr>
+    <h3>Welcome to Airbnb</h3>
+    <mat-form-field class="example-full-width">
+        <mat-label>email</mat-label>
+        <input name="email" ngModel type="email" matInput placeholder="Ex. pat@example.com" />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Enter your password</mat-label>
+        <input name="password" ngModel matInput [type]="hide ? 'password' : 'text'">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field>
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+    <div class="sign">
+        <button type="submit" mat-raised-button color="primary">Sign in</button>
+    </div>
+    <br>
+    <hr>
+    <div class="flex">
+        <a mat-button routerLink="/register"> Go To Registration</a>
+        <a mat-button routerLink="/update-user-info"> Update Profile Info</a>
+    </div>
+</form>

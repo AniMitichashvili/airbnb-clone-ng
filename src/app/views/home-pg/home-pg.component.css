@@ -1,0 +1,185 @@
+:root {
+  --roboto-font: 'Roboto', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+mat-card {
+  max-width: 1366px !important;
+}
+
+.example-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+
+.card {
+  width: 300px;
+  height: 406px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.mat-card-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-family: var(--roboto-font);
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: 20px;
+  color: rgb(38, 38, 38);
+
+}
+
+.card-text {
+  font-family: var(--roboto-font);
+  font-weight: 400;
+  margin-bottom: 10px;
+  font-size: 17px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.carousel {
+  position: relative;
+}
+
+
+
+.carousel-inner {
+  display: flex;
+  overflow: hidden;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.carousel-control-prev {
+  left: 10px;
+}
+
+.carousel-control-next {
+  right: 10px;
+}
+
+.crd-slide {
+  width: 1200px;
+  margin-top: 60px;
+  display: flex;
+  justify-content: space-around;
+}
+
+
+.crd {
+  width: 109.781px;
+
+}
+
+.crd img {
+  width: 24px;
+  height: 24px;
+}
+
+.crd h3 {
+  text-align: center;
+  color: #6a6a6a;
+}
+
+.clm {
+  display: flex;
+  flex-direction: column;
+  align-items: center !important;
+}
+
+.both {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.filt-cont {
+  display: flex;
+  align-items: center;
+  margin: 0px 7px 23px;
+}
+
+.filt span {
+  font-size: 15px;
+
+
+}
+
+.filt button {
+  width: 90.563px;
+  height: 45px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: white;
+  border: 1px solid rgb(230, 230, 230);
+  cursor: pointer;
+}
+
+.filt button:hover {
+  background-color: rgb(230, 230, 230);
+  border: 1px solid black;
+
+}
+
+.filt button:active {
+  background-color: rgb(230, 230, 230);
+  border: 1px solid black;
+}
+
+.btm {
+  margin-bottom: 32px !important;
+}

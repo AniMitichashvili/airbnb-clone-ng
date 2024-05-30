@@ -1,0 +1,53 @@
+<form [formGroup]="updateUserInfoForm" #form="ngForm" (ngSubmit)="onUpdateInfoFormSubmit()">
+    <mat-card>
+        <h2> Update Your Account</h2>
+        <mat-card-content>
+            <mat-form-field>
+                <mat-label>Full name</mat-label>
+                <input formControlName="userName" matInput type="text">
+            </mat-form-field>
+            <mat-form-field class="">
+                <mat-label>email</mat-label>
+                <input formControlName="email" type="email" matInput placeholder="Ex. pat@example.com" />
+            </mat-form-field>
+            <mat-form-field class="mat-50">
+                <mat-label>Enter your password</mat-label>
+                <input formControlName="newPassword" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <mat-form-field class="mat-50">
+                <mat-label>Repeat your password</mat-label>
+                <input formControlName="newPassword" matInput [type]="hide ? 'password' : 'text'">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide">
+                    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Telephone</mat-label>
+                <span matTextPrefix>+995 &nbsp;</span>
+                <input formControlName="phone" type="text" matInput placeholder="555-555-123">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Personal Number</mat-label>
+                <input formControlName="personalNumber" type="text" matInput placeholder="00000006999">
+            </mat-form-field>
+
+            <div class="mat-50">
+                <h4 class="example-h4">Gender</h4>
+                <mat-radio-group formControlName="gender" aria-label="Select an option">
+                    <mat-radio-button value="Female">Female</mat-radio-button>
+                    <mat-radio-button value="Male">Male</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </mat-card-content>
+        <div class="example-container">
+            <button type="submit" class="example-full-width" mat-raised-button color="primary">Update</button>
+        </div>
+    </mat-card>
+</form>

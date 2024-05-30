@@ -1,0 +1,37 @@
+<div class="modal">
+  <div class="modal-content">
+    <h4>Filters</h4>
+    <hr class="btm">
+    <form [formGroup]="filterForm" (ngSubmit)="onFilterHotelFormSubmit()">
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" formControlName="city" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="maxPricePerNight">Max Price Per Night</label>
+        <input type="number" id="maxPricePerNight" formControlName="maxPricePerNight" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="minRating">Min Rating</label>
+        <input type="number" id="minRating" formControlName="minRating" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="amenities">Amenities</label>
+        <div formArrayName="amenities">
+          <div *ngFor="let amenity of amenitiesFormArray.controls; let i = index">
+            <input type="text" [formControlName]="i" class="form-control">
+          </div>
+        </div>
+        <button type="button" (click)="addAmenity()">Add Amenity</button>
+      </div>
+      <div class="form-group">
+        <label for="roomType">Room Type</label>
+        <input type="text" id="roomType" formControlName="roomType" class="form-control">
+      </div>
+      <div class="btn">
+        <button type="submit" class="btn btn-primary submit-button">Search</button>
+        <button type="button" class="btn btn-secondary submit-button" (click)="onCloseModal()">Close</button>
+      </div>
+    </form>
+  </div>
+</div>

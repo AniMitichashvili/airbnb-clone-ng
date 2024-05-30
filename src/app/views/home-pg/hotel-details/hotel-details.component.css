@@ -1,0 +1,296 @@
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+:root {
+  --roboto-font: 'Roboto', sans-serif;
+}
+
+.card-body {
+  max-width: 1349px !important;
+  display: flex;
+  justify-content: center;
+}
+
+
+mat-card {
+  box-shadow: none;
+}
+mat-card-content li{
+  font-family: var(--roboto-font);
+  font-weight: 400;
+  font-size: 17px;
+  color: rgb(38, 38, 38);
+}
+
+h4{
+  font-family: var(--roboto-font);
+  font-weight: 500;
+  font-style: medium;
+  font-size: 25px;
+  color: rgb(38, 38, 38);
+  margin: 15px 0px 15px;
+}
+.card-body article {
+  max-width: 1121px;
+  padding: 10px;
+}
+
+.card-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  max-width: 1121px;
+  margin: 0 auto;
+}
+
+.image-container {
+  overflow: hidden;
+}
+
+.image-container:nth-child(1) {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+
+.image-container:nth-child(1) img {
+  width: 562px;
+  height: 320px;
+  object-fit: cover;
+}
+
+.image-container:nth-child(2),
+.image-container:nth-child(3),
+.image-container:nth-child(4),
+.image-container:nth-child(5) {
+  width: 272px;
+  height: 160px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+button.example-custom-date-class {
+  background: orange;
+  border-radius: 100%;
+}
+
+.reservation-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 400px;
+}
+
+.date-picker {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.date-picker mat-form-field {
+  width: 48%;
+}
+
+.guest-selector {
+  margin-bottom: 20px;
+}
+
+.guest-selector mat-form-field {
+  width: 100%;
+}
+
+.reserve-button {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.reservation-details {
+  margin-top: 20px;
+}
+
+.price-details div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.total-price {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.mat-mdc-raised-button {
+  width: 100%;
+  background-color: rgb(219, 12, 100);
+}
+
+.content-wrapper {
+  height: calc(100vh - 200px);
+  overflow-y: auto;
+  padding-right: 450px;
+}
+
+.reservation-wrapper {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  width: 400px;
+}
+
+.reserv {
+  float: right;
+  border: 1px solid rgb(230, 230, 230) !important;
+  border-radius: 12px !important;
+}
+
+.reservation-card {
+  box-shadow: none;
+}
+
+.comment-list {
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.comment-item {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-item p {
+  margin: 0;
+}
+
+.add-comment {
+  margin-top: 20px;
+}
+
+.add-comment mat-form-field {
+  width: 100%;
+}
+
+.add-comment button {
+  margin-top: 10px;
+}
+
+.rating p{
+  font-family: var(--roboto-font);
+  font-weight: 400;
+  font-size: 23px;
+  color: rgb(38, 38, 38);
+}
+.rating span{
+  margin-right: 5px;
+}
+.rating p{
+  margin-left: 5px;
+}
+
+.host h4{
+  font-family: var(--roboto-font);
+  font-weight: 400;
+  font-size: 18px;
+}
+.host p{
+  font-family: var(--roboto-font);
+  font-weight: 400;
+  font-size: 18px;
+}
+.desc p{
+  font-family: var(--roboto-font);
+  font-weight: 400;
+  font-size: 18px;
+}
+
+h3{
+  font-family: var(--roboto-font);
+  font-weight: 400;
+  font-size: 18px;
+}
+
+.comments-section {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+}
+.comment {
+  background-color: #ffffff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.comment-message {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.comment-author {
+  font-size: 14px;
+  color: #888888;
+}
+.add-comment {
+  margin-top: 20px;
+}
+
+.add-comment mat-form-field {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.add-comment textarea {
+  min-height: 100px;
+}
+
+.add-comment button {
+  margin-top: 10px;
+}
+h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.comment-list {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.add-comment {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.mat-mdc-card img{
+    width: 300px;
+  height: 300px;
+  background-size: cover;
+}
+
+.mat-mdc-card{
+  display:flex;
+  gap:10px;
+
+}

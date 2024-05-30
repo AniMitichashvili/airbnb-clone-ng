@@ -1,0 +1,152 @@
+<br>
+<hr>
+<div class="card-body" *ngIf="hotel">
+  <article>
+    <aside class="top">
+      <h4>{{ hotel.name }}</h4>
+      <br>
+      <div class="image-grid">
+        <div class="image-container" *ngFor="let image of hotel.images">
+          <img [src]="image.url" [alt]="image.description">
+        </div>
+      </div>
+    </aside>
+    <mat-card>
+      <mat-card-content>
+        <h4 class="card-title">Entire rental unit in {{ hotel.address.country }}, {{ hotel.address.city }}</h4>
+        <div class="rating" style="display: flex; flex-direction: row; ">
+          <span *ngFor="let star of getStars(hotel.rating)">
+            <svg *ngIf="star === 'full'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+              width="20px" height="20px">
+              <path
+                d="M12 2L15.09 8.26L22 9.27L17 14.14L20.20 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+            </svg>
+            <svg *ngIf="star === 'half'" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+              width="20px" height="20px">
+              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L20.20 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
+                fill-opacity="0.5" />
+            </svg>
+          </span>•<p>{{ hotel.rating }}</p>
+        </div>
+      </mat-card-content>
+    </mat-card>
+    <hr>
+    <mat-card *ngIf="hotel.owner">
+      <mat-card-content class="host">
+        <!-- <h3>Host Information</h3> -->
+        <h4>Hosted by {{ hotel.owner.fullName }}</h4>
+        <p>Email: {{ hotel.owner.email }}</p>
+      </mat-card-content>
+    </mat-card>
+    <hr>
+    <mat-card>
+      <mat-card-content class="desc">
+        <p>{{hotel.description}}</p>
+      </mat-card-content>
+    </mat-card>
+    <mat-card>
+      <mat-card-content>
+        <h3>What this place offers</h3>
+        <ul>
+          <li *ngFor="let amenity of hotel.amenities">{{ amenity }}</li>
+        </ul>
+      </mat-card-content>
+    </mat-card>
+    <aside class="bottom">
+      <mat-card *ngIf="hotel.rooms && hotel.rooms.length > 0">
+        <mat-card-content>
+          <h3>Room Details</h3>
+          <div style="display: flex;">
+            <div *ngFor="let room of hotel.rooms">
+              <div class="room-slider">
+                <mat-card *ngFor="let image of room.roomImages">
+                  <img mat-card-image [src]="image.url" [alt]="image.description">
+                </mat-card>
+              </div>
+              <p>Max Occupancy: {{ room.maxOccupancy }}</p>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="reserv">
+        <mat-card-content>
+          <h3>${{ hotel.rooms[0].pricePerNight }} night</h3>
+          <div class="reservation-card">
+            <div class="date-picker">
+              <mat-form-field appearance="fill">
+                <mat-label>Check-in Date</mat-label>
+                <input matInput [matDatepicker]="checkinPicker" [(ngModel)]="checkinDate">
+                <mat-datepicker-toggle matSuffix [for]="checkinPicker"></mat-datepicker-toggle>
+                <mat-datepicker #checkinPicker></mat-datepicker>
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Check-out Date</mat-label>
+                <input matInput [matDatepicker]="checkoutPicker" [(ngModel)]="checkoutDate">
+                <mat-datepicker-toggle matSuffix [for]="checkoutPicker"></mat-datepicker-toggle>
+                <mat-datepicker #checkoutPicker></mat-datepicker>
+              </mat-form-field>
+            </div>
+
+            <div class="guest-selector">
+              <mat-form-field appearance="fill">
+                <mat-label>Guests</mat-label>
+                <mat-select [(ngModel)]="numberOfGuests">
+                  <mat-option *ngFor="let num of [1, 2, 3, 4, 5]" [value]="num">{{ num }} guest</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div> <button mat-raised-button color="primary" (click)="bookHotel()">Reserve</button>
+
+            <div class="reservation-details">
+              <p>You won't be charged yet</p>
+              <div class="price-details">
+                <div>
+                  <span>${{ hotel.rooms[0].pricePerNight }} x {{ calculateNumberOfNights() }} nights</span>
+                  <span>${{ calculateTotalPrice() }}</span>
+                </div>
+                <div>
+                  <span>Cleaning fee</span>
+                  <span>$15</span>
+                </div>
+                <div>
+                  <span>Airbnb service fee</span>
+                  <span>$82</span>
+                </div>
+              </div>
+              <div class="total-price">
+                <span>Total before taxes</span>
+                <span>{{ calculateTotalPrice() + 15 + 82 | currency }}</span>
+              </div>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+    </aside>
+    <mat-card *ngIf="hotel.address">
+      <mat-card-content>
+        <h3>Location</h3>
+        <div class="map-container">
+          <iframe [src]="getMapUrl()" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+
+    <mat-card>
+      <mat-card-content>
+        <h3>Comments</h3>
+        <div class="comment" *ngFor="let comment of comments">
+          <p class="comment-message">{{ comment.message }}</p>
+          <p class="comment-author">Posted by: {{ comment.author }}</p>
+        </div>
+        <div class="add-comment">
+          <mat-form-field appearance="outline">
+            <mat-label>Add a comment</mat-label>
+            <textarea matInput [(ngModel)]="newComment" placeholder="Write your comment..."></textarea>
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="addComment()">Submit</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </article>
+</div>

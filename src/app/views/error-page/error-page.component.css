@@ -1,0 +1,27 @@
+:root {
+    --roboto-font: 'Roboto', sans-serif;
+}
+
+.error-page {
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+}
+
+h1 {
+    font-family: var(--roboto-font);
+    font-weight: 700;
+    font-style: medium;
+    font-size: 28px;
+    color: rgb(230, 42, 42);
+    text-align: center;
+}
+
+a {
+    text-align: center;
+    font-family: var(--roboto-font);
+    font-weight: 400;
+    font-size: 19px;
+    text-decoration: none;
+    color: #007BFF;
+}
