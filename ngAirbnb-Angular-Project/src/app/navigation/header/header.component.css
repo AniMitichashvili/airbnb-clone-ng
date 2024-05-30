@@ -1,0 +1,14 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.mat-toolbar {
+    background-color: white;
+}
+
+.for-logo{
+    color: #ff385c;
+}
+.help{
+    color: black;
+}
